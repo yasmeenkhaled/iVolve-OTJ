@@ -21,7 +21,7 @@ sudo apt install mysql-server
 ![image](https://github.com/user-attachments/assets/208fcc83-176d-47ec-bffa-0f710fa6dad7)
 
 
-### Shell Script
+## Shell Script
 ```
 #! /bin/bash
 DB_USER=" root"
@@ -35,7 +35,7 @@ sudo mysqldump -u root $DB_NAME > $BACKUP_FILE
 
 ![photo_5967634935424600502_x](https://github.com/user-attachments/assets/544adcfa-3428-4ea4-8968-4c9bc5063131)
 
-### Run CronTab and Screen Backupfile
+## Run CronTab and Screen Backupfile
 
 ![photo_5967634935424600501_y](https://github.com/user-attachments/assets/f67c1e08-09a6-4419-9de0-7c81ad56b334)
 
