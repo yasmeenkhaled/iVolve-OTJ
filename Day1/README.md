@@ -24,6 +24,19 @@
 - Securely transfer the public key to another machine using ssh-copy-id command.
 - Configure SSH to just run 'ssh ivolve' to access the remote machine.
 
+## 🧾 Steps Overview
+### 1. Generate SSH Key Pair
+`ssh-keygen`
+
+![image](https://github.com/user-attachments/assets/a3a25942-fbf5-4a99-88e3-eaf45afc475e)
+
+### 2. Copy Public Key to Remote Server
+`ssh-copy-id user@remote_ip`
+
+![image](https://github.com/user-attachments/assets/84385b57-7187-4902-8d59-c84acfcf49d8)
+
+### 3. Connect to Remote Server
+`ssh user@remote_ip`
 
 ![image](https://github.com/user-attachments/assets/ec896a4d-dcc5-4b7d-99a7-74b152f25fd3)
 
