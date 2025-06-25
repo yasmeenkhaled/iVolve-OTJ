@@ -71,6 +71,6 @@ sudo mysqldump -u root $DB_NAME > $BACKUP_FILE
 - Configure SSH to just run 'ssh ivolve' to access the remote machine.
 
 
-![image](https://github.com/user-attachments/assets/0162ee3f-74e1-48dd-b49c-18cbc046ed34)
+![image](https://github.com/user-attachments/assets/ec896a4d-dcc5-4b7d-99a7-74b152f25fd3)
 
-![image](https://github.com/user-attachments/assets/047afdca-acef-4bb0-a980-42c9422242e7)
+
