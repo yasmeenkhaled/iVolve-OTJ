@@ -1,0 +1,92 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "jass0meen/jenkins_app"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Clone Code') {
+            steps {
+                git 'https://github.com/Ibrahim-Adel15/jenkins-deployment.git'
+            }
+        }
+
+        stage('Run Unit Tests') {
+            steps {
+                dir('jenkins-deployment') {
+                    echo "🧪 No tests defined yet, skipping..."
+                    // sh 'npm test' أو pytest أو أي اختبار
+                }
+            }
+        }
+
+        stage('Build App') {
+            steps {
+                dir('jenkins-deployment') {
+                    echo "⚙️ Build step (skipped or add command)"
+                    // sh './build.sh' أو أي build command
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                dir('jenkins-deployment') {
+                    sh "docker build -t $IMAGE_NAME:$IMAGE_TAG ."
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                dir('jenkins-deployment') {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                        sh "docker push $IMAGE_NAME:$IMAGE_TAG"
+                    }
+                }
+            }
+        }
+
+        stage('Remove Local Docker Image') {
+            steps {
+                dir('jenkins-deployment') {
+                    sh "docker rmi $IMAGE_NAME:$IMAGE_TAG || true"
+                }
+            }
+        }
+
+        stage('Update deployment.yaml') {
+            steps {
+                dir('jenkins-deployment') {
+                    sh """
+                    sed -i 's|image: .*|image: $IMAGE_NAME:$IMAGE_TAG|' k8s/deployment.yaml
+                    cat k8s/deployment.yaml
+                    """
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                dir('jenkins-deployment') {
+                    sh 'kubectl apply -f k8s/deployment.yaml'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "🎯 Pipeline finished"
+        }
+        success {
+            echo "✅ Deployment Successful"
+        }
+        failure {
+            echo "❌ Pipeline Failed"
+        }
+    }
+}
