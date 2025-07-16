@@ -25,17 +25,18 @@ Automate the following steps using a Jenkins pipeline:
 
 4. **Build Docker Image**  
    Build Docker image from the included `Dockerfile`.
+   <img width="708" height="134" alt="CentOS Jasmine-2025-07-15-21-17-46" src="https://github.com/user-attachments/assets/9426f6cc-1c83-4366-886a-4f9e2cbff9cf" />
 
-5. **Push to Docker Hub**  
+6. **Push to Docker Hub**  
    Push the image to your Docker Hub account.
 
-6. **Remove Local Image**  
+7. **Remove Local Image**  
    Delete the image locally after pushing.
 
-7. **Update `deployment.yaml`**  
+8. **Update `deployment.yaml`**  
    Replace the image tag with the new one using Jenkins `$BUILD_NUMBER`.
 
-8. **Deploy to Kubernetes Cluster**  
+9. **Deploy to Kubernetes Cluster**  
    Apply the updated deployment using:
    ```bash
    kubectl apply -f deployment.yaml
