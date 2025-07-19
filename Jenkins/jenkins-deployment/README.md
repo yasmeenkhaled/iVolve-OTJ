@@ -27,6 +27,8 @@ Automate the following steps using a Jenkins pipeline:
    Build Docker image from the included `Dockerfile`.
    <img width="708" height="134" alt="CentOS Jasmine-2025-07-15-21-17-46" src="https://github.com/user-attachments/assets/9426f6cc-1c83-4366-886a-4f9e2cbff9cf" />
 
+  <img width="1186" height="740" alt="CentOS Jasmine-2025-07-19-16-09-43" src="https://github.com/user-attachments/assets/23289702-41c5-4366-80a1-e522939ce1c8" />
+
 6. **Push to Docker Hub**  
    Push the image to your Docker Hub account.
 
